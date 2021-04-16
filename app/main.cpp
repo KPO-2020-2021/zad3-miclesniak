@@ -16,6 +16,7 @@
 #include "example.h"
 #include "vector.hh"
 #include "matrix.hh"
+#include "prostokat.hh"
 #include "../include/lacze_do_gnuplota.hh"
 
 /*!
@@ -118,19 +119,19 @@ int main() {
             << std::endl;
   // std::system("cat ../LICENSE");
   // do zadania Rotacja 2D
-  std::cout << "Vector:" << std::endl;
-  Vector tmpV1 = Vector();
-  std::cout << "Vector - konstruktor bezparametryczny:\n" << tmpV1 << std::endl;
-  double argumentsV[] = {1.0, 2.0};
-  Vector tmpV2 = Vector(argumentsV);
-  std::cout << "Vector - konstruktor parametryczny:\n" << tmpV2 << std::endl;
+//   std::cout << "Vector:" << std::endl;
+//   Vector tmpV1 = Vector();
+//   std::cout << "Vector - konstruktor bezparametryczny:\n" << tmpV1 << std::endl;
+//   double argumentsV[] = {1.0, 2.0};
+//   Vector tmpV2 = Vector(argumentsV);
+//   std::cout << "Vector - konstruktor parametryczny:\n" << tmpV2 << std::endl;
 
-  std::cout << "Matrix:" << std::endl;
-  Matrix tmpM1 = Matrix();
-  std::cout << "Matrix - konstruktor bezparametryczny:\n" << tmpM1 << std::endl;
-  double argumentsM[][SIZE] = {{1.0, 2.0},{3.0, 4.0}};
-  Matrix tmpM2 = Matrix(argumentsM);
-  std::cout << "Matrix - konstruktor parametryczny:\n" << tmpM2 << std::endl;
+//   std::cout << "Matrix:" << std::endl;
+//   Matrix tmpM1 = Matrix();
+//   std::cout << "Matrix - konstruktor bezparametryczny:\n" << tmpM1 << std::endl;
+//   double argumentsM[][SIZE] = {{1.0, 2.0},{3.0, 4.0}};
+//   Matrix tmpM2 = Matrix(argumentsM);
+//   std::cout << "Matrix - konstruktor parametryczny:\n" << tmpM2 << std::endl;
 
     PzG::LaczeDoGNUPlota  Lacze;  // Ta zmienna jest potrzebna do wizualizacji
                                 // rysunku prostokata
@@ -154,19 +155,50 @@ int main() {
    //
   Lacze.ZmienTrybRys(PzG::TR_2D);
 
-  PrzykladZapisuWspolrzednychDoStrumienia(std::cout,0);
-  if (!PrzykladZapisuWspolrzednychDoPliku("prostokat.dat",0)) return 1;
-  Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+  double p1[] = {100.0,100.0};
+  double p2[] = {100.0,-100.0};
+  double p3[] = {-100.0,-100.0};
+  double p4[] = {-100.0,100.0};
+  double p5[] = {0.0,0.0};
+  Vector V1 = Vector(p1);
+  Vector V2 = Vector(p2);
+  Vector V3 = Vector(p3);
+  Vector V4 = Vector(p4);
+  Vector V5 = Vector(p5);
+  Prostokat P1 = Prostokat(V1,V2,V3,V4);
+  double alfa = 45;
+  
+  P1.Zapis_do_Str(std::cout);
+  P1.Zapis_do_pliku("prostokat.dat");
+  Lacze.Rysuj();
   std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
   std::cin.ignore(100000,'\n');
-   //----------------------------------------------------------
-   // Ponownie wypisuje wspolrzedne i rysuje prostokąt w innym miejscu.
-   //
-  PrzykladZapisuWspolrzednychDoStrumienia(std::cout,50);
-  if (!PrzykladZapisuWspolrzednychDoPliku("prostokat.dat",50)) return 1;
-  Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+  P1.move(V5);
+  P1.Zapis_do_pliku("prostokat.dat");
+  Lacze.Rysuj();
   std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
   std::cin.ignore(100000,'\n');
+  P1.rotate(alfa);
+  P1.Zapis_do_pliku("prostokat.dat");
+  Lacze.Rysuj();
+  std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
+  std::cin.ignore(100000,'\n');
+
+
+
+//   PrzykladZapisuWspolrzednychDoStrumienia(std::cout,0);
+//   if (!PrzykladZapisuWspolrzednychDoPliku("prostokat.dat",0)) return 1;
+//   Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+//   std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
+//   std::cin.ignore(100000,'\n');
+//    //----------------------------------------------------------
+//    // Ponownie wypisuje wspolrzedne i rysuje prostokąt w innym miejscu.
+//    //
+//   PrzykladZapisuWspolrzednychDoStrumienia(std::cout,50);
+//   if (!PrzykladZapisuWspolrzednychDoPliku("prostokat.dat",50)) return 1;
+//   Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+//   std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
+//   std::cin.ignore(100000,'\n');
 
   // Z bazy projektu-wydmuszki Boiler Plate C++:
   // Bring in the dummy class from the example source,
