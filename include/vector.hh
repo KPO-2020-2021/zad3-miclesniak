@@ -3,6 +3,10 @@
 #include "size.hh"
 #include <iostream>
 
+/**
+ * @brief Modeluje pojecie obiektu Vector 
+ * 
+ */
 class Vector {
 
 private:

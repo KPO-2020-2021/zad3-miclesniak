@@ -46,7 +46,7 @@ Matrix::Matrix(double tmp[SIZE][SIZE])
  |      Iloczyn dwoch skladnikow przekazanych jako wektor.                    |
  */
 
-Vector Matrix::operator*(Vector tmp)
+Vector Matrix::operator*(Vector const tmp)
 {
   Vector result;
   for (int i = 0; i < SIZE; i++)
@@ -67,7 +67,7 @@ Vector Matrix::operator*(Vector tmp)
  |  Zwraca:                                                                   |
  |      Wartosc macierzy w danym miejscu tablicy.                             |
  */
-double &Matrix::operator()(unsigned int row, unsigned int column)
+double &Matrix::operator()(unsigned int const row, unsigned int const column)
 {
 
   if (row >= SIZE)
@@ -93,7 +93,7 @@ double &Matrix::operator()(unsigned int row, unsigned int column)
  |  Zwraca:                                                                   |
  |      Wartosc macierzy w danym miejscu tablicy jako stala.                  |
  */
-const double &Matrix::operator()(unsigned int row, unsigned int column) const
+const double &Matrix::operator()(unsigned int const row, unsigned int const column) const
 {
 
   if (row >= SIZE)
@@ -119,7 +119,7 @@ const double &Matrix::operator()(unsigned int row, unsigned int column) const
  |  Zwraca:                                                                   |
  |      Macierz - iloczyn dwóch podanych macierzy.                  |
  */
-Matrix Matrix::operator+(Matrix tmp)
+Matrix Matrix::operator+(Matrix const tmp)
 {
   Matrix result;
   for (int i = 0; i < SIZE; i++)

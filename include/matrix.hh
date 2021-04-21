@@ -4,7 +4,10 @@
 #include "vector.hh"
 #include <iostream>
 #include <cstdlib>
-
+/**
+ * @brief Modeluje pojecie obiektu Matrix 
+ * 
+ */
 class Matrix
 {
 
@@ -16,13 +19,13 @@ public:
 
   Matrix(); // Konstruktor klasy
 
-  Vector operator*(Vector tmp); // Operator mnożenia przez wektor
+  Vector operator*(Vector const tmp); // Operator mnożenia przez wektor
 
-  Matrix operator+(Matrix tmp);
+  Matrix operator+(Matrix const tmp);
 
-  double &operator()(unsigned int row, unsigned int column);
+  double &operator()(unsigned int const row, unsigned int const column);
 
-  const double &operator()(unsigned int row, unsigned int column) const;
+  const double &operator()(unsigned int const row, unsigned int const column) const;
 };
 
 std::istream &operator>>(std::istream &in, Matrix &mat);

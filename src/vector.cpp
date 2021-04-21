@@ -42,7 +42,7 @@ Vector::Vector(double tmp[SIZE]) {
 Vector Vector::operator + (const Vector &v) {
     Vector result;
     for (int i = 0; i < SIZE; i++) {
-        result[i] = size[i] += v[i];
+        result[i] = size[i] + v[i];
     }
     return result;
 }
@@ -60,7 +60,7 @@ Vector Vector::operator + (const Vector &v) {
 Vector Vector::operator - (const Vector &v) {
     Vector result;
     for (int i = 0; i < SIZE; i++) {
-        result[i] = size[i] -= v[i];
+        result[i] = size[i] - v[i];
     }
     return result;
 }
@@ -79,7 +79,7 @@ Vector Vector::operator - (const Vector &v) {
 Vector Vector::operator * (const double &tmp) {
     Vector result;
     for (int i = 0; i < SIZE; i++) {
-        result[i] = size[i] *= tmp;
+        result[i] = size[i] * tmp;
     }
     return result;
 }
