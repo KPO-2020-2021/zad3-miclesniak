@@ -199,3 +199,96 @@ TEST_CASE("Przeciazenie wczytywania dla Macierzy"){
     CHECK(M1 == M2);
 }
 
+TEST_CASE("Test konstruktora parametrycznego Prostokata"){
+    
+    double tmp1[] = {1,1},tmp2[] = {2,2},tmp3[] = {3,3}, tmp4[] = {4,4};
+    Vector v1,v2,v3,v4;
+    v1 = Vector(tmp1);
+        v2 = Vector(tmp2);
+            v3 = Vector(tmp3);
+                v4 = Vector(tmp4);
+    Prostokat P1 = Prostokat(v1,v2,v3,v4);
+    CHECK(P1[0] == v1);
+    CHECK(P1[1] == v2);
+    CHECK(P1[2] == v3);
+    CHECK(P1[3] == v4);
+}
+
+
+TEST_CASE("Test metody obrotu prostokąta o 90 stopni"){
+    
+    double tmp1[] = {-2,1},tmp2[] = {2,1},tmp3[] = {2,-1}, tmp4[] = {-2,-1};
+    Vector v1,v2,v3,v4,v5,v6,v7,v8;
+    v1 = Vector(tmp1);
+        v2 = Vector(tmp2);
+            v3 = Vector(tmp3);
+                v4 = Vector(tmp4);
+    Prostokat P1 = Prostokat(v1,v2,v3,v4);
+    P1.rotate(90);
+    double tmp5[] = {-1,-2},tmp6[] = {-1,2},tmp7[] = {1,2}, tmp8[] = {1,-2};
+    v5 = Vector(tmp5);
+        v6 = Vector(tmp6);
+            v7 = Vector(tmp7);
+                v8 = Vector(tmp8);
+    CHECK_EQ(P1[0] == v5,true);
+    CHECK(P1[1] == v6);
+    CHECK(P1[2] == v7);
+    CHECK(P1[3] == v8);
+}
+
+TEST_CASE("Test metody obrotu prostokąta o -270 stopni"){
+    
+    double tmp1[] = {-2,1},tmp2[] = {2,1},tmp3[] = {2,-1}, tmp4[] = {-2,-1};
+    Vector v1,v2,v3,v4,v5,v6,v7,v8;
+    v1 = Vector(tmp1);
+        v2 = Vector(tmp2);
+            v3 = Vector(tmp3);
+                v4 = Vector(tmp4);
+    Prostokat P1 = Prostokat(v1,v2,v3,v4);
+    P1.rotate(-270);
+    double tmp5[] = {-1,-2},tmp6[] = {-1,2},tmp7[] = {1,2}, tmp8[] = {1,-2};
+    v5 = Vector(tmp5);
+        v6 = Vector(tmp6);
+            v7 = Vector(tmp7);
+                v8 = Vector(tmp8);
+    CHECK(P1[0] == v5);
+    CHECK(P1[1] == v6);
+    CHECK(P1[2] == v7);
+    CHECK(P1[3] == v8);
+}
+
+TEST_CASE("Test wypisywania prostokata"){
+    std::stringstream os;
+    double tmp1[] = {-2,1},tmp2[] = {2,1},tmp3[] = {2,-1}, tmp4[] = {-2,-1};
+    Vector v1,v2,v3,v4;
+    v1 = Vector(tmp1);
+        v2 = Vector(tmp2);
+            v3 = Vector(tmp3);
+                v4 = Vector(tmp4);
+    Prostokat P1 = Prostokat(v1,v2,v3,v4);
+    os << P1;
+    CHECK_EQ("    -2.0000000000 1.0000000000\n    2.0000000000 1.0000000000\n    2.0000000000 -1.0000000000\n   -2.0000000000 -1.0000000000\n" ,os.str());
+}
+
+TEST_CASE("Test translacji"){
+    double tmp1[] = {-5,2},tmp2[] = {5,2},tmp3[] = {5,-2}, tmp4[] = {-5,-2};
+    Vector v1,v2,v3,v4,v5,v6,v7,v8;
+    v1 = Vector(tmp1);
+        v2 = Vector(tmp2);
+            v3 = Vector(tmp3);
+                v4 = Vector(tmp4);
+    Prostokat P1 = Prostokat(v1,v2,v3,v4);
+    double tmp5[] = {5,22},tmp6[] = {15,22},tmp7[] = {15,18}, tmp8[] = {5,18};
+    v5 = Vector(tmp5);
+        v6 = Vector(tmp6);
+            v7 = Vector(tmp7);
+                v8 = Vector(tmp8);
+
+    double tmpp[] = {10,20};
+    Vector V1 = Vector(tmpp);
+    P1.move(V1);
+    CHECK(P1[0] == v5);
+    CHECK(P1[1] == v6);
+    CHECK(P1[2] == v7);
+    CHECK(P1[3] == v8);
+}
