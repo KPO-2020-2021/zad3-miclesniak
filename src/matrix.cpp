@@ -36,6 +36,61 @@ Matrix::Matrix(double tmp[SIZE][SIZE])
     }
   }
 }
+/**
+ * @brief Funkcja porownania Macierzy
+ * 
+ * @param tmp - Macierz do ktorej porownujemy
+ * @return true - Macierze sa takie same
+ * @return false - Macierze roznia sie od siebie
+ */
+bool Matrix::operator==(Matrix const tmp) const
+{
+  if (value[0][0] == tmp(0, 0) && value[0][1] == tmp(0, 1) && value[1][0] == tmp(1, 0) && value[1][1] == tmp(1, 1))
+    return true;
+  else
+    return false;
+}
+/**
+ * @brief Funkcja obliczania wyznacznika Macierzy
+ * 
+ */
+void Matrix::Oblwyznacznik() const{
+double wyznacznik=0;
+
+for(int i=0;i<SIZE;++i){
+  if(i==0){
+    wyznacznik = value[i][i] * 1;
+  }
+  else
+    wyznacznik *= value[i][i];
+}
+std::cout<<"Wyznacznik macierzy jest równy: "<<wyznacznik<<std::endl;
+}
+/**
+ * @brief Funkcja przeksztalcania Macierzy za pomoca elminacji Gaussa
+ * 
+ */
+void Matrix::ElminacjaGaussa()
+{
+  double ratio;
+  for (int i = 0; i <= SIZE - 2; i++)
+  {
+    if (value[i][i] == 0.0)
+    {
+      std::cout << "Mathematical Error!";
+      exit(0);
+    }
+    for (int j = i+1; j <= SIZE - 1; j++)
+    {
+      ratio = value[j][i] / value[i][i];
+
+      for (int k = 0; k <= SIZE; k++)
+      {
+        value[j][k] = value[j][k] - ratio * value[i][k];
+      }
+    }
+  }
+}
 
 /******************************************************************************
  |  Realizuje mnozenie macierzy przez wektor.                                 |

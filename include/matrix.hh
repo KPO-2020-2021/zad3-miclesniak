@@ -19,6 +19,12 @@ public:
 
   Matrix(); // Konstruktor klasy
 
+  bool operator == (Matrix const tmp) const;
+
+  void ElminacjaGaussa();
+
+  void Oblwyznacznik() const;
+
   Vector operator*(Vector const tmp); // Operator mnożenia przez wektor
 
   Matrix operator+(Matrix const tmp);

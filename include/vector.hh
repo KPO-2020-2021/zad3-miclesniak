@@ -19,6 +19,8 @@ public:
 
     Vector(double [SIZE]);
 
+    bool operator == (const Vector &V) const;
+
     Vector operator + (const Vector &v);
 
     Vector operator - (const Vector &v);

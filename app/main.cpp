@@ -124,6 +124,7 @@ int main()
       std::cout << "p - przesunięcie prostokąta o zadany wektor" << std::endl;
       std::cout << "w - wyswietl współrzędne wierzchołków" << std::endl;
       std::cout << "m - wyświetl menu" << std::endl;
+      std::cout << "n - narysuj prostokat" <<std::endl;
       std::cout << "k - koniec działania programu" << std::endl;
     }
     break;
@@ -144,38 +145,18 @@ int main()
     std::cout << "Twój wybór? (m - menu) --> ";
     std::cin >> x;
   }
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+//Test Metody liczenia Wyznacznika i Elminacji Gaussa //
+// | | | | | | | | | | | | | | | | | | | | | | | | | |//
+// v v v v v v v v v v v v v v v v v v v v v v v v v v//
+// double tmp[2][2] = {{10.22,21},{399,107.123}};
+// Matrix M2 = Matrix(tmp);
+// M2.Oblwyznacznik();
+// std::cout<<M2;
+// M2.ElminacjaGaussa();
+// M2.Oblwyznacznik();
+// std::cout<<M2;}
 
-// double p1[] = {100.0, 100.0};   //Prawy Górny Wierzchołek
-// double p2[] = {100.0, -100.0};  //Prawy Dolny Wierzchołek
-// double p3[] = {-100.0, -100.0}; //Lewy Dolny Wierzchołek
-// double p4[] = {-100.0, 100.0};  //Lewy Górny wirzchołek
-// double p5[] = {0.0, 0.0};
-// Vector V1 = Vector(p1);
-// Vector V2 = Vector(p2);
-// Vector V3 = Vector(p3);
-// Vector V4 = Vector(p4);
-// Vector V5 = Vector(p5);
-// Prostokat P1 = Prostokat(V1, V2, V3, V4);
-// double alfa = 45;
-
-// P1.Zapis_do_Str(std::cout);
-// P1.Zapis_do_pliku("prostokat.dat");
-// P1.Compare();
-// Lacze.Rysuj();
-// std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
-// std::cin.ignore(100000, '\n');
-// P1.move(V5);
-// P1.Compare();
-// P1.Zapis_do_pliku("prostokat.dat");
-// Lacze.Rysuj();
-// std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
-// std::cin.ignore(100000, '\n');
-// P1.rotate(alfa);
-// P1.Compare();
-// P1.Zapis_do_pliku("prostokat.dat");
-// Lacze.Rysuj();
-// std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
-// std::cin.ignore(100000, '\n');
 
 // Z bazy projektu-wydmuszki Boiler Plate C++:
 // Bring in the dummy class from the example source,

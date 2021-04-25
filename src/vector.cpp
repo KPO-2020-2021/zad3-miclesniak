@@ -47,6 +47,19 @@ Vector Vector::operator + (const Vector &v) {
     return result;
 }
 
+/**
+ * @brief FUnkcja porownania
+ * 
+ * @param V Vector z którym porównujemy
+ * @return true Jesli vectory sa takie same
+ * @return false Jesli vectory sa rózne
+ */
+bool Vector::operator == (const Vector &V) const{
+    if(size[0] == V[0] && size[1] == V[1])
+        return true;
+    else 
+        return false;
+}
 
 /******************************************************************************
  |  Realizuje odejmowanie dwoch wektorow.                                     |
